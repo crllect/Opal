@@ -1,0 +1,46 @@
+html,
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  font-size: 5vh;
+  font-family: "Open Sans";
+  user-select: none;
+  color: #A6ADC8;
+  background-color: #1E1E2E;
+}
+
+.pageNotFound {
+  z-index: 100;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 25vh;
+  border: 0.536vh solid transparent;
+  height: 10vh;
+  border-radius: 20px;
+  border-right-color: #A6ADC8;
+  padding-right: 1em;
+  margin-right: 1em;
+}
+
+.pageNotFoundText {
+  z-index: 100;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 25vh;
+}
+
+.kaomoji {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(50vh);
+  font-size: 10vh;
+}/*# sourceMappingURL=404.css.map */

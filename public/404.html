@@ -1,1 +1,42 @@
-<h1>Yo, there aint nothin here (404 btw)</h1>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="description" content="404, page not found" />
+
+		<link rel="stylesheet" href="css/404.css" />
+		<link rel="stylesheet" href="css/tailwind.css" />
+	</head>
+	<body>
+		<div class="pageNotFound">404</div>
+		<span class="pageNotFoundText"> Entered page not found </span>
+		<div class="kaomoji"></div>
+		<script>
+			async function fetchKaomojiLine() {
+				try {
+					const response = await fetch('assets/kaomojis.txt');
+					const text = await response.text();
+					const lines = text
+						.split('\n')
+						.filter(line => line.trim().length > 0);
+					const randomIndex = Math.floor(
+						Math.random() * lines.length
+					);
+					return lines[randomIndex];
+				} catch (error) {
+					console.error('Error fetching kaomoji:', error);
+					return '😅';
+				}
+			}
+			async function setRandomKaomoji() {
+				const kaomoji = await fetchKaomojiLine();
+				const kaomojiElement = document.querySelector('.kaomoji');
+				if (kaomojiElement) {
+					kaomojiElement.textContent = kaomoji;
+				}
+			}
+			document.addEventListener('DOMContentLoaded', setRandomKaomoji);
+		</script>
+	</body>
+</html>
