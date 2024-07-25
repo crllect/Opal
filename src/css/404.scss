@@ -7,7 +7,7 @@ body {
 	align-items: center;
 	padding: 0;
 	margin: 0;
-	font-size: 5vh;
+	font-size: 1.5rem;
 	font-family: 'Open Sans';
 	user-select: none;
 	color: #a6adc8;
@@ -40,8 +40,8 @@ body {
 	align-items: center;
 	top: 25vh;
 	border: 0.536vh solid transparent;
-	height: 10vh;
-	border-radius: 20px;
+	height: 4rem;
+	border-radius: 1.4rem;
 	border-right-color: #a6adc8;
 	padding-right: 1em;
 	margin-right: 1em;
@@ -62,7 +62,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	transform: translateY(50vh);
-	font-size: 10vh;
+	font-size: 4rem;
 }
 
 .backdrop {
