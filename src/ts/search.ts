@@ -45,16 +45,33 @@ document.getElementById('searchButton')!.onclick = async function (
 	iframeWindow.src = __uv$config.prefix + __uv$config.encodeUrl(url);
 };
 
-document.getElementById('switcher')!.onselect = async function (event: Event) {
-	const target = event.target as HTMLSelectElement;
-	switch (target.value) {
-		case 'epoxy':
-			await connection.setTransport('/epoxy/index.mjs', [
-				{ wisp: wispUrl }
-			]);
-			break;
-		case 'bare':
-			await connection.setTransport('/baremod/index.mjs', [bareUrl]);
-			break;
+document.addEventListener('DOMContentLoaded', () => {
+	if (!localStorage.getItem('switcher')) {
+		localStorage.setItem('switcher', 'epoxy');
 	}
-};
+
+	const switcherButton = document.getElementById(
+		'switcherButton'
+	) as HTMLButtonElement;
+
+	const toggleSwitcher = () => {
+		const currentValue = localStorage.getItem('switcher');
+		const newValue = currentValue === 'epoxy' ? 'bare' : 'epoxy';
+		localStorage.setItem('switcher', newValue);
+		switcherButton.textContent = newValue;
+
+		switch (newValue) {
+			case 'epoxy':
+				connection.setTransport('/epoxy/index.mjs', [
+					{ wisp: wispUrl }
+				]);
+				break;
+			case 'bare':
+				connection.setTransport('/baremod/index.mjs', [bareUrl]);
+				break;
+		}
+	};
+
+	switcherButton.textContent = localStorage.getItem('switcher');
+	switcherButton.addEventListener('click', toggleSwitcher);
+});
