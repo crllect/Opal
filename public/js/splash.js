@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		document.removeEventListener('wheel', hideOnScrollAttempt);
 		document.removeEventListener('keydown', hideDiv);
 		document.removeEventListener('click', hideDiv);
-		if (localStorage.getItem('hasVisited')) {
+		if (!localStorage.getItem('hasVisited')) {
 			localStorage.setItem('hasVisited', 'true');
 			setTimeout(() => {
 				const overlay = document.createElement('div');
