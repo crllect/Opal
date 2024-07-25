@@ -241,10 +241,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	const search = document.querySelector('.search');
 	if (urlInput && search) {
 		urlInput.addEventListener('focus', () => {
-			search.style.transform = 'translateX(-145px)';
+			search.style.transform = 'translateX(7.5vw)';
 		});
 		urlInput.addEventListener('blur', () => {
-			search.style.transform = 'translateX(145px)';
+			search.style.transform = 'translateX(17.5vw)';
 		});
 	}
 });

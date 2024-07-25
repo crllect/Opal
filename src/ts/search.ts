@@ -243,11 +243,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	if (urlInput && search) {
 		urlInput.addEventListener('focus', () => {
-			search.style.transform = 'translateX(-220px)';
+			search.style.transform = 'translateX(7.5vw)';
 		});
 
 		urlInput.addEventListener('blur', () => {
-			search.style.transform = 'translateX(220px)';
+			search.style.transform = 'translateX(17.5vw)';
 		});
 	}
 });
