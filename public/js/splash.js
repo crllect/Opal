@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	splash.style.background =
 		'url("../assets/splash.png") no-repeat center center';
 	splash.style.backgroundSize = 'cover';
-	splash.style.transition = 'transform 0.3s ease-in, opacity 0.4s ease-in';
+	splash.style.transition = 'transform 0.2s ease-in, opacity 0.3s ease-in';
 	document.body.appendChild(splash);
 	const heroText = document.createElement('span');
 	heroText.textContent = 'Opal';
@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
 				overlay.style.zIndex = '999';
 				overlay.style.backdropFilter = 'blur(16px)';
+				overlay.style.transition = 'background-color 0.3s ease';
 				const firstVisitPopup = document.createElement('div');
 				firstVisitPopup.style.position = 'fixed';
 				firstVisitPopup.style.top = '50%';
@@ -90,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				firstVisitPopup.style.display = 'flex';
 				firstVisitPopup.style.flexDirection = 'column';
 				firstVisitPopup.style.alignItems = 'center';
+				firstVisitPopup.style.transition = 'background-color 0.3s ease';
 				const closeButton = document.createElement('button');
 				closeButton.style.position = 'absolute';
 				closeButton.style.top = '10px';
@@ -145,16 +147,24 @@ document.addEventListener('DOMContentLoaded', () => {
 				firstVisitPopup.appendChild(textBox);
 				firstVisitPopup.appendChild(shamelessPlug);
 				closeButton.addEventListener('click', () => {
-					firstVisitPopup.remove();
-					overlay.remove();
+					firstVisitPopup.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+					overlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+					setTimeout(() => {
+						firstVisitPopup.remove();
+						overlay.remove();
+					}, 300);
 				});
 				overlay.addEventListener('click', () => {
-					firstVisitPopup.remove();
-					overlay.remove();
+					firstVisitPopup.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+					overlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+					setTimeout(() => {
+						firstVisitPopup.remove();
+						overlay.remove();
+					}, 300);
 				});
 				document.body.appendChild(overlay);
 				document.body.appendChild(firstVisitPopup);
-			}, 400);
+			}, 350);
 		}
 	};
 	const hideOnScrollAttempt = event => {

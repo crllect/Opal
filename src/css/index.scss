@@ -41,4 +41,30 @@
 .buttonDisabled {
 	background-color: grey;
 	cursor: not-allowed;
+	text-shadow: 0px 0px 4px rgba(166, 173, 200, 0.65);
+}
+
+#controls {
+	height: 50px;
+	display: flex;
+	flex-direction: row;
+	margin-left: 0.6rem;
+	font-size: 20px;
+	transition: all 0.3s ease !important;
+}
+
+.controlsButton {
+	transition: all 0.3s ease !important;
+	margin: 0.6rem;
+	font-style: italic;
+	text-shadow: 0px 0px 4px rgba(166, 173, 200, 0.75);
+	&:hover {
+		text-shadow: 0px 0px 4px rgba(184, 189, 206, 0.8);
+		color: #c3c8db;
+	}
+}
+
+#firstVisitPopup,
+#overlay {
+	transition: background-color 0.2s ease;
 }

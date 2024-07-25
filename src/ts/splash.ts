@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	splash.style.background =
 		'url("../assets/splash.png") no-repeat center center';
 	splash.style.backgroundSize = 'cover';
-	splash.style.transition = 'transform 0.3s ease-in, opacity 0.4s ease-in';
+	splash.style.transition = 'transform 0.2s ease-in, opacity 0.3s ease-in';
 	document.body.appendChild(splash);
 
 	const heroText = document.createElement('span');
@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
 				overlay.style.zIndex = '999';
 				overlay.style.backdropFilter = 'blur(16px)';
+				overlay.style.transition = 'background-color 0.3s ease';
 
 				const firstVisitPopup = document.createElement('div');
 				firstVisitPopup.style.position = 'fixed';
@@ -97,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				firstVisitPopup.style.display = 'flex';
 				firstVisitPopup.style.flexDirection = 'column';
 				firstVisitPopup.style.alignItems = 'center';
+				firstVisitPopup.style.transition = 'background-color 0.3s ease';
 
 				const closeButton = document.createElement('button');
 				closeButton.style.position = 'absolute';
@@ -131,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				textBox.textContent =
 					'Welcome to Opal proxy, a fully featured and sleek Ultraviolet implementation';
 				textBox.style.padding = '1rem';
+
 				const shamelessPlug = document.createElement('a');
 				shamelessPlug.href = 'https://github.com/crllect';
 				shamelessPlug.style.color = '#CBA6F7';
@@ -158,18 +161,28 @@ document.addEventListener('DOMContentLoaded', () => {
 				firstVisitPopup.appendChild(shamelessPlug);
 
 				closeButton.addEventListener('click', () => {
-					firstVisitPopup.remove();
-					overlay.remove();
+					firstVisitPopup.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+					overlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+
+					setTimeout(() => {
+						firstVisitPopup.remove();
+						overlay.remove();
+					}, 300);
 				});
 
 				overlay.addEventListener('click', () => {
-					firstVisitPopup.remove();
-					overlay.remove();
+					firstVisitPopup.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+					overlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+
+					setTimeout(() => {
+						firstVisitPopup.remove();
+						overlay.remove();
+					}, 300);
 				});
 
 				document.body.appendChild(overlay);
 				document.body.appendChild(firstVisitPopup);
-			}, 400);
+			}, 350);
 		}
 	};
 
@@ -179,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	document.addEventListener('wheel', hideOnScrollAttempt, { passive: false });
-
 	document.addEventListener('keydown', hideDiv, { once: true });
 	document.addEventListener('click', hideDiv, { once: true });
 });

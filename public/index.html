@@ -19,9 +19,26 @@
 	<body>
 		<div class="topBar">
 			<div id="controls">
-				<button id="backButton" onclick="goBack()">Back</button>
-				<button id="forwardButton" onclick="goForward()">
-					Forward
+				<button
+					id="backButton"
+					class="controlsButton"
+					onclick="goBack()"
+				>
+					&lt;
+				</button>
+				<button
+					id="reloadButton"
+					class="controlsButton"
+					onclick="reloadPage()"
+				>
+					reload
+				</button>
+				<button
+					id="forwardButton"
+					class="controlsButton"
+					onclick="goForward()"
+				>
+					&gt;
 				</button>
 			</div>
 			<input
