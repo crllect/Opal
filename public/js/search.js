@@ -46,6 +46,17 @@ const bareUrl =
 	'://' +
 	location.host +
 	'/bare/';
+let searchHistory = [];
+let currentHistoryIndex = -1;
+const urlPattern = new RegExp(
+	'^(https?:\\/\\/)?' +
+		'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
+		'((\\d{1,3}\\.){3}\\d{1,3}))' +
+		'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
+		'(\\?[;&a-z\\d%_.~+=-]*)?' +
+		'(\\#[-a-z\\d_]*)?$',
+	'i'
+);
 (_a = document.getElementById('urlInput')) === null || _a === void 0
 	? void 0
 	: _a.addEventListener('keydown', function (event) {
@@ -55,7 +66,7 @@ const bareUrl =
 					let urlInput = document.getElementById('urlInput');
 					let url = urlInput.value;
 					let searchUrl = 'https://www.google.com/search?q=';
-					if (!url.includes('.')) {
+					if (!urlPattern.test(url)) {
 						url = searchUrl + encodeURIComponent(url);
 					} else {
 						if (
@@ -72,12 +83,63 @@ const bareUrl =
 					}
 					iframeWindow.src =
 						__uv$config.prefix + __uv$config.encodeUrl(url);
+					updateHistory(iframeWindow.src);
+					updateArrows();
 				}
 			});
 		});
+const updateHistory = src => {
+	searchHistory = [...searchHistory.slice(0, currentHistoryIndex + 1), src];
+	currentHistoryIndex++;
+	localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+	updateArrows();
+};
+const goBack = () => {
+	if (currentHistoryIndex > 0) {
+		currentHistoryIndex--;
+		iframeWindow.src = searchHistory[currentHistoryIndex];
+		updateArrows();
+	}
+};
+const goForward = () => {
+	if (currentHistoryIndex < searchHistory.length - 1) {
+		currentHistoryIndex++;
+		iframeWindow.src = searchHistory[currentHistoryIndex];
+		updateArrows();
+	}
+};
+const reloadPage = () => {
+	if (currentHistoryIndex >= 0) {
+		iframeWindow.src = searchHistory[currentHistoryIndex];
+	}
+};
+const updateArrows = () => {
+	const backButton = document.getElementById('backButton');
+	const forwardButton = document.getElementById('forwardButton');
+	if (backButton) {
+		if (currentHistoryIndex > 0) {
+			backButton.disabled = false;
+			backButton.style.opacity = '1';
+		} else {
+			backButton.disabled = true;
+			backButton.style.opacity = '0.5';
+		}
+	}
+	if (forwardButton) {
+		if (currentHistoryIndex < searchHistory.length - 1) {
+			forwardButton.disabled = false;
+			forwardButton.style.opacity = '1';
+		} else {
+			forwardButton.disabled = true;
+			forwardButton.style.opacity = '0.5';
+		}
+	}
+};
 document.addEventListener('DOMContentLoaded', () => {
-	if (!localStorage.getItem('switcher')) {
-		localStorage.setItem('switcher', 'epoxy');
+	const savedHistory = localStorage.getItem('searchHistory');
+	if (savedHistory) {
+		searchHistory = JSON.parse(savedHistory);
+		currentHistoryIndex = searchHistory.length - 1;
 	}
 	const switcherButton = document.getElementById('switcherButton');
 	const toggleSwitcher = () => {
@@ -122,4 +184,5 @@ document.addEventListener('DOMContentLoaded', () => {
 			attributeFilter: ['src']
 		});
 	}
+	updateArrows();
 });
