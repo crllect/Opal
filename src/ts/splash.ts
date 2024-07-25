@@ -46,12 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		const updateClock = () => {
 			if (clock) {
 				const now = new Date();
-				const options: Intl.DateTimeFormatOptions = {
-					weekday: 'long',
-					hour: 'numeric',
-					minute: 'numeric',
-					hour12: true
-				};
 				const dayOptions: Intl.DateTimeFormatOptions = {
 					weekday: 'long'
 				};
@@ -213,7 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
 							overlay.remove();
 						}, 300);
 					});
-
 					document.body.appendChild(overlay);
 					document.body.appendChild(firstVisitPopup);
 				}, 400);
@@ -225,12 +218,15 @@ document.addEventListener('DOMContentLoaded', () => {
 			hideDiv();
 		};
 
-		document.addEventListener('wheel', hideOnScrollAttempt, {
-			passive: false
-		});
-		document.addEventListener('keydown', hideDiv, { once: true });
-		document.addEventListener('click', hideDiv, { once: true });
+		setTimeout(() => {
+			document.addEventListener('wheel', hideOnScrollAttempt, {
+				passive: false
+			});
+			document.addEventListener('keydown', hideDiv, { once: true });
+			document.addEventListener('click', hideDiv, { once: true });
+		}, 100);
 	}
+
 	const splashButton = document.getElementById('splashButton');
 	if (splashButton) {
 		splashButton.addEventListener('click', splashScreen);

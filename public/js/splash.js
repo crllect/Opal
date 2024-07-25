@@ -44,12 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		const updateClock = () => {
 			if (clock) {
 				const now = new Date();
-				const options = {
-					weekday: 'long',
-					hour: 'numeric',
-					minute: 'numeric',
-					hour12: true
-				};
 				const dayOptions = {
 					weekday: 'long'
 				};
@@ -205,11 +199,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			event.preventDefault();
 			hideDiv();
 		};
-		document.addEventListener('wheel', hideOnScrollAttempt, {
-			passive: false
-		});
-		document.addEventListener('keydown', hideDiv, { once: true });
-		document.addEventListener('click', hideDiv, { once: true });
+		setTimeout(() => {
+			document.addEventListener('wheel', hideOnScrollAttempt, {
+				passive: false
+			});
+			document.addEventListener('keydown', hideDiv, { once: true });
+			document.addEventListener('click', hideDiv, { once: true });
+		}, 100);
 	}
 	const splashButton = document.getElementById('splashButton');
 	if (splashButton) {

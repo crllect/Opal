@@ -241,10 +241,18 @@ document.addEventListener('DOMContentLoaded', () => {
 	const search = document.querySelector('.search');
 	if (urlInput && search) {
 		urlInput.addEventListener('focus', () => {
-			search.style.transform = 'translateX(7.5vw)';
+			search.style.transform = 'translateX(11vw)';
 		});
 		urlInput.addEventListener('blur', () => {
 			search.style.transform = 'translateX(17.5vw)';
 		});
+	}
+	if (!localStorage.getItem('hasVisited')) {
+		setTimeout(() => {
+			const urlInput = document.getElementById('urlInput');
+			if (urlInput) {
+				urlInput.focus();
+			}
+		}, 250);
 	}
 });
