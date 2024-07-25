@@ -121,6 +121,17 @@ document.addEventListener('DOMContentLoaded', () => {
 				textBox.textContent =
 					'Welcome to Opal proxy, a fully featured and sleek Ultraviolet implementation';
 				textBox.style.padding = '1rem';
+				const shamelessPlug = document.createElement('a');
+				shamelessPlug.href = 'https://github.com/crllect';
+				shamelessPlug.style.color = '#CBA6F7';
+				shamelessPlug.style.textAlign = 'center';
+				shamelessPlug.style.fontFamily = 'Open Sans';
+				shamelessPlug.style.fontSize = '20px';
+				shamelessPlug.style.fontStyle = 'normal';
+				shamelessPlug.style.fontWeight = '400';
+				shamelessPlug.style.lineHeight = 'normal';
+				shamelessPlug.style.textDecorationLine = 'underline';
+				shamelessPlug.textContent = 'By crllect';
 				firstVisitPopup.addEventListener(
 					'mouseenter',
 					() => (closeButton.style.background = '#ED8796')
@@ -132,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				firstVisitPopup.appendChild(closeButton);
 				firstVisitPopup.appendChild(image);
 				firstVisitPopup.appendChild(textBox);
+				firstVisitPopup.appendChild(shamelessPlug);
 				closeButton.addEventListener('click', () => {
 					firstVisitPopup.remove();
 					overlay.remove();
