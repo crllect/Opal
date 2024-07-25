@@ -31,7 +31,7 @@ document.getElementById('searchButton').onclick = function (event) {
         event.preventDefault();
         let urlInput = document.getElementById('urlInput');
         let url = urlInput.value;
-        let searchUrl = 'https://www.google.com/search?q=';
+        let searchUrl = 'https://www.duckduckgo.com/?q=';
         if (!url.includes('.')) {
             url = searchUrl + encodeURIComponent(url);
         }

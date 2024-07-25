@@ -13,9 +13,7 @@ function fetchKaomojiLine() {
         try {
             const response = yield fetch('./assets/kaomojis.txt');
             const text = yield response.text();
-            const lines = text
-                .split('\n')
-                .filter(line => line.trim().length > 0);
+            const lines = text.split('\n').filter(line => line.trim().length > 0);
             const randomIndex = Math.floor(Math.random() * lines.length);
             return lines[randomIndex];
         }
