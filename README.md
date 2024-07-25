@@ -13,5 +13,4 @@ Here are screenshots from figma:
 ![2](https://github.com/user-attachments/assets/4309960f-5f7e-4236-b483-a7199141cadf)
 ![3](https://github.com/user-attachments/assets/9ebd6f3f-ef14-4749-a434-8badae1f0cff)
 
-
 # Check out the 404 page...
