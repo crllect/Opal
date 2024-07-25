@@ -13,6 +13,8 @@
 			}
 		</script>
 
+		<title>Opal</title>
+
 		<link rel="stylesheet" href="css/index.css" />
 		<link rel="stylesheet" href="css/tailwind.css" />
 	</head>
@@ -41,17 +43,30 @@
 					&gt;
 				</button>
 			</div>
-			<input
-				type="text"
-				id="urlInput"
-				class="text-3xl font-bold underline"
-				placeholder="Enter URL here"
-			/>
-			<button id="switcherButton">epoxy</button>
+			<div class="search">
+				<button id="switcherButton">epoxyTransport</button>@Opal ~ $
+				<input type="text" id="urlInput" placeholder="_" />
+			</div>
 			<span id="websiteTitle">Opal</span>
 		</div>
 
-		<div class="botBar"></div>
+		<div class="botBar">
+			<div id="credits">
+				<img src="assets/splash.png" id="creditsPfp"/>
+				<div id="creditsText">
+					By
+					<a href="https://github.com" id="me">crllect</a>
+				</div>
+			</div>
+			<div id="middleButtons">
+				<span class="discordButton middleButton">Discord</span>
+				<span>&nbsp;/&nbsp;</span>
+				<span class="githuButton middleButton">Github</span>
+				<span>&nbsp;/&nbsp;</span>
+				<span class="splashButton middleButton">Splash</span>
+			</div>
+			<div id="botClock"></div>
+		</div>
 
 		<iframe id="iframeWindow" class="iframeWindow"></iframe>
 	</body>

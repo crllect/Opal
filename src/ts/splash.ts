@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	splash.style.background =
 		'url("../assets/splash.png") no-repeat center center';
 	splash.style.backgroundSize = 'cover';
-	splash.style.transition = 'transform 0.2s ease-in, opacity 0.3s ease-in';
+	splash.style.transition = 'transform 0.3s ease-in, opacity 0.4s ease-in';
 	document.body.appendChild(splash);
 
 	const heroText = document.createElement('span');
@@ -42,18 +42,30 @@ document.addEventListener('DOMContentLoaded', () => {
 	splash.appendChild(clock);
 
 	const updateClock = () => {
-		const now = new Date();
-		const options: Intl.DateTimeFormatOptions = {
-			weekday: 'long',
-			hour: 'numeric',
-			minute: 'numeric',
-			hour12: true
-		};
-		clock.innerText = now.toLocaleTimeString('en-US', options);
+		if (clock) {
+			const now = new Date();
+			const options: Intl.DateTimeFormatOptions = {
+				weekday: 'long',
+				hour: 'numeric',
+				minute: 'numeric',
+				hour12: true
+			};
+			const dayOptions: Intl.DateTimeFormatOptions = {
+				weekday: 'long'
+			};
+			const timeOptions: Intl.DateTimeFormatOptions = {
+				hour: 'numeric',
+				minute: 'numeric',
+				hour12: true
+			};
+			const formattedDay = now.toLocaleDateString('en-US', dayOptions);
+			const formattedTime = now.toLocaleTimeString('en-US', timeOptions);
+			clock.innerText = `${formattedDay}, ${formattedTime}`;
+		}
 	};
 
 	updateClock();
-	setInterval(updateClock, 60000);
+	setInterval(updateClock, 15000);
 
 	const hideDiv = () => {
 		splash.style.transition =
@@ -110,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				closeButton.style.border = 'none';
 				closeButton.style.borderRadius = '100%';
 				closeButton.style.cursor = 'pointer';
+				closeButton.style.transition = 'background-color 0.3s ease';
 
 				const image = document.createElement('div');
 				image.style.boxShadow = '0px 2px 10px 0px rgba(0, 0, 0, 0.25)';
@@ -121,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				image.style.flexShrink = '0';
 				image.style.borderRadius = '100%';
 				image.style.transform = 'translateY(0.3rem)';
+				image.style.transition = 'background-color 0.3s ease';
 
 				const textBox = document.createElement('div');
 				textBox.style.color = '#A6ADC8';
@@ -133,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				textBox.textContent =
 					'Welcome to Opal proxy, a fully featured and sleek Ultraviolet implementation';
 				textBox.style.padding = '1rem';
+				textBox.style.transition = 'background-color 0.3s ease';
 
 				const shamelessPlug = document.createElement('a');
 				shamelessPlug.href = 'https://github.com/crllect';
@@ -145,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				shamelessPlug.style.lineHeight = 'normal';
 				shamelessPlug.style.textDecorationLine = 'underline';
 				shamelessPlug.textContent = 'By crllect';
+				shamelessPlug.style.transition = 'color 0.3s ease';
 
 				firstVisitPopup.addEventListener(
 					'mouseenter',
@@ -160,10 +176,19 @@ document.addEventListener('DOMContentLoaded', () => {
 				firstVisitPopup.appendChild(textBox);
 				firstVisitPopup.appendChild(shamelessPlug);
 
-				closeButton.addEventListener('click', () => {
+				const fadeOutElements = () => {
 					firstVisitPopup.style.backgroundColor = 'rgba(0, 0, 0, 0)';
 					overlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';
 
+					[closeButton, image, textBox, shamelessPlug].forEach(
+						element => {
+							element.style.opacity = '0';
+						}
+					);
+				};
+
+				closeButton.addEventListener('click', () => {
+					fadeOutElements();
 					setTimeout(() => {
 						firstVisitPopup.remove();
 						overlay.remove();
@@ -171,9 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				});
 
 				overlay.addEventListener('click', () => {
-					firstVisitPopup.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-					overlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-
+					fadeOutElements();
 					setTimeout(() => {
 						firstVisitPopup.remove();
 						overlay.remove();
@@ -182,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 				document.body.appendChild(overlay);
 				document.body.appendChild(firstVisitPopup);
-			}, 350);
+			}, 400);
 		}
 	};
 

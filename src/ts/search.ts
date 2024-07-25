@@ -128,23 +128,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const toggleSwitcher = () => {
 		const currentValue = localStorage.getItem('switcher');
-		const newValue = currentValue === 'epoxy' ? 'bare' : 'epoxy';
+		const newValue =
+			currentValue === 'epoxyTransport' ? 'bareMux' : 'epoxyTransport';
 		localStorage.setItem('switcher', newValue);
 		switcherButton.textContent = newValue;
 
 		switch (newValue) {
-			case 'epoxy':
+			case 'epoxyTransport':
 				connection.setTransport('/epoxy/index.mjs', [
 					{ wisp: wispUrl }
 				]);
 				break;
-			case 'bare':
+			case 'bareMux':
 				connection.setTransport('/baremod/index.mjs', [bareUrl]);
 				break;
 		}
 	};
 
-	switcherButton.textContent = localStorage.getItem('switcher');
+	switcherButton.textContent = localStorage.getItem('switcher') || 'epoxy';
 	switcherButton.addEventListener('click', toggleSwitcher);
 
 	const updateWebsiteTitle = () => {
@@ -156,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					iframeWindow.contentWindow.document;
 				websiteTitle.textContent = iframeDoc.title;
 			} catch (error) {
-				websiteTitle.textContent = 'Opal';
+				websiteTitle.textContent = window.location.hostname;
 			}
 		}
 
@@ -176,4 +177,77 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	updateArrows();
+
+	const urlInput = document.getElementById('urlInput') as HTMLInputElement;
+
+	setInterval(() => {
+		urlInput.placeholder = urlInput.placeholder === '_' ? '' : '_';
+	}, 250);
+
+	if (urlInput) {
+		urlInput.style.width = '100px';
+
+		const updateWidth = () => {
+			const maxChars = 75;
+			const initialWidth = 250;
+			const tempSpan = document.createElement('span');
+			tempSpan.style.visibility = 'hidden';
+			tempSpan.style.position = 'absolute';
+			tempSpan.style.whiteSpace = 'pre';
+			tempSpan.style.font = window.getComputedStyle(urlInput).font;
+			tempSpan.textContent = urlInput.value || urlInput.placeholder;
+			document.body.appendChild(tempSpan);
+
+			const newWidth = tempSpan.offsetWidth + 10;
+			urlInput.style.width =
+				urlInput.value.length > maxChars
+					? `${initialWidth + maxChars * 7}px`
+					: `${Math.max(initialWidth, newWidth)}px`;
+			document.body.removeChild(tempSpan);
+		};
+
+		urlInput.addEventListener('input', updateWidth);
+		urlInput.addEventListener('change', updateWidth);
+		updateWidth();
+	}
+
+	const botClock = document.getElementById('botClock');
+
+	const updateClock = () => {
+		if (botClock) {
+			const now = new Date();
+			const options: Intl.DateTimeFormatOptions = {
+				weekday: 'long',
+				hour: 'numeric',
+				minute: 'numeric',
+				hour12: true
+			};
+			const dayOptions: Intl.DateTimeFormatOptions = {
+				weekday: 'long'
+			};
+			const timeOptions: Intl.DateTimeFormatOptions = {
+				hour: 'numeric',
+				minute: 'numeric',
+				hour12: true
+			};
+			const formattedDay = now.toLocaleDateString('en-US', dayOptions);
+			const formattedTime = now.toLocaleTimeString('en-US', timeOptions);
+			botClock.innerText = `${formattedDay}, ${formattedTime}`;
+		}
+	};
+
+	updateClock();
+	setInterval(updateClock, 15000);
+
+	const search = document.querySelector('.search') as HTMLElement;
+
+	if (urlInput && search) {
+		urlInput.addEventListener('focus', () => {
+			search.style.transform = 'translateX(-220px)';
+		});
+
+		urlInput.addEventListener('blur', () => {
+			search.style.transform = 'translateX(220px)';
+		});
+	}
 });
