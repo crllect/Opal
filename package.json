@@ -1,11 +1,12 @@
 {
 	"name": "opal",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"scripts": {
 		"start": "node index.js",
 		"css:build": "postcss src/css/tailwind.css -o public/css/tailwind.css",
 		"css:watch": "postcss src/css/tailwind.css -o public/css/tailwind.css --watch",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"compile": "tsc && prettier --write ."
 	},
 	"dependencies": {
 		"@mercuryworkshop/bare-as-module3": "^2.2.2",
