@@ -16,34 +16,31 @@ const bareUrl: string =
 
 document
 	.getElementById('urlInput')
-	?.addEventListener('keydown', function (event: KeyboardEvent) {
+	?.addEventListener('keydown', async function (event: KeyboardEvent) {
 		if (event.key === 'Enter') {
 			event.preventDefault();
-			document.getElementById('searchButton')?.click();
+
+			let urlInput = document.getElementById(
+				'urlInput'
+			) as HTMLInputElement;
+			let url: string = urlInput.value;
+			let searchUrl: string = 'https://www.google.com/search?q=';
+
+			if (!url.includes('.')) {
+				url = searchUrl + encodeURIComponent(url);
+			} else {
+				if (!url.startsWith('http://') && !url.startsWith('https://')) {
+					url = 'https://' + url;
+				}
+			}
+			if (!(await connection.getTransport())) {
+				await connection.setTransport('/epoxy/index.mjs', [
+					{ wisp: wispUrl }
+				]);
+			}
+			iframeWindow.src = __uv$config.prefix + __uv$config.encodeUrl(url);
 		}
 	});
-
-document.getElementById('searchButton')!.onclick = async function (
-	event: MouseEvent
-) {
-	event.preventDefault();
-
-	let urlInput = document.getElementById('urlInput') as HTMLInputElement;
-	let url: string = urlInput.value;
-	let searchUrl: string = 'https://www.duckduckgo.com/?q=';
-
-	if (!url.includes('.')) {
-		url = searchUrl + encodeURIComponent(url);
-	} else {
-		if (!url.startsWith('http://') && !url.startsWith('https://')) {
-			url = 'https://' + url;
-		}
-	}
-	if (!(await connection.getTransport())) {
-		await connection.setTransport('/epoxy/index.mjs', [{ wisp: wispUrl }]);
-	}
-	iframeWindow.src = __uv$config.prefix + __uv$config.encodeUrl(url);
-};
 
 document.addEventListener('DOMContentLoaded', () => {
 	if (!localStorage.getItem('switcher')) {
@@ -74,4 +71,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	switcherButton.textContent = localStorage.getItem('switcher');
 	switcherButton.addEventListener('click', toggleSwitcher);
+
+	const updateWebsiteTitle = () => {
+		const websiteTitle = document.getElementById('websiteTitle');
+		if (websiteTitle) {
+			try {
+				const iframeDoc =
+					iframeWindow.contentDocument ||
+					iframeWindow.contentWindow.document;
+				websiteTitle.textContent = iframeDoc.title;
+			} catch (error) {
+				websiteTitle.textContent = 'Opal';
+			}
+		}
+
+		setInterval(updateWebsiteTitle, 1000);
+	};
+
+	const iframe = document.querySelector('iframe');
+	if (iframe) {
+		const observer = new MutationObserver(() => {
+			updateWebsiteTitle();
+		});
+
+		observer.observe(iframe, {
+			attributes: true,
+			attributeFilter: ['src']
+		});
+	}
 });

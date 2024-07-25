@@ -17,14 +17,23 @@
 		<link rel="stylesheet" href="css/tailwind.css" />
 	</head>
 	<body>
-		<input
-			type="text"
-			id="urlInput"
-			class="text-3xl font-bold underline"
-			placeholder="Enter URL here"
-		/>
-		<button id="searchButton">Search Text</button>
-		<button id="switcherButton">epoxy</button>
+		<div class="topBar">
+			<div id="controls">
+				<button id="backButton">Back</button>
+				<button id="forwardButton">Forward</button>
+				<button id="reloadButton">Reload</button>
+			</div>
+			<input
+				type="text"
+				id="urlInput"
+				class="text-3xl font-bold underline"
+				placeholder="Enter URL here"
+			/>
+			<button id="switcherButton">epoxy</button>
+			<span id="websiteTitle">Opal</span>
+		</div>
+
+		<div class="botBar"></div>
 
 		<iframe id="iframeWindow" class="iframeWindow"></iframe>
 	</body>

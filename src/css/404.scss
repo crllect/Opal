@@ -3,6 +3,7 @@
 html,
 body {
 	user-select: none;
+	font-size: 1.5rem;
 }
 
 .pageNotFound {
@@ -11,13 +12,13 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	top: 25vh;
 	border: 0.536vh solid transparent;
 	height: 4rem;
 	border-radius: 1.4rem;
 	border-right-color: #a6adc8;
 	padding-right: 1em;
 	margin-right: 1em;
+	transform: translateY(-5rem);
 }
 
 .pageNotFoundText {
@@ -26,7 +27,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	top: 25vh;
+	transform: translateY(-5rem);
 }
 
 .kaomoji {
@@ -34,6 +35,6 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	transform: translateY(50vh);
+	transform: translateY(5rem);
 	font-size: 4rem;
 }

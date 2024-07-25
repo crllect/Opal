@@ -2,42 +2,43 @@
 
 .iframeWindow {
 	position: absolute;
-	width: 100vw;
-	height: 90vh;
+	width: calc(100vw - 5px * 2);
+	height: calc(100vh - 50px * 2 - 5px * 4);
 	border: 0;
 	padding: 0;
 	margin: 0;
-	left: 0;
-	bottom: 0;
-	background-color: #141414;
+	left: 5px;
+	top: 60px;
+	background-color: #1e1e2e;
+	z-index: 0;
 }
 
-#urlInput {
+.topBar {
 	position: absolute;
-	padding: 0em;
-	padding-left: 0.5em;
-	margin: 0;
-	left: 0;
-	top: 0;
-	width: 80vw;
-	height: 10vh;
+	width: calc(100vw - 5px * 2);
+	height: 50px;
 	border: 0;
-	outline: 0;
-	color: aliceblue;
-	background-color: #25252a;
-	font-size: 5vh;
+	padding: 0;
+	margin: 0;
+	left: 5px;
+	top: 5px;
+	background-color: #1e1e2e;
+	z-index: 0;
 }
 
-#searchButton {
+.botBar {
 	position: absolute;
-	margin: 0;
-	right: 0;
-	top: 0;
-	width: 20vw;
-	height: 10vh;
+	width: calc(100vw - 5px * 2);
+	height: 50px;
 	border: 0;
-	outline: 0;
-	color: #141414;
-	background-color: aliceblue;
-	font-size: 5vh;
+	padding: 0;
+	margin: 0;
+	left: 5px;
+	bottom: 5px;
+	background-color: #1e1e2e;
+	z-index: 0;
+}
+.buttonDisabled {
+	background-color: grey;
+	cursor: not-allowed;
 }
