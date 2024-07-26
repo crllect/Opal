@@ -70,51 +70,17 @@
 	}
 }
 
-#titleInput {
+#titleInput,
+#faviconInput,
+#panicButtonInput,
+#clearCookiesInput,
+#disableSplashInput {
 	background: transparent;
 	font-style: italic;
 	text-shadow: 0px 0px 4px rgba(166, 173, 200, 0.75);
 	transition: all 0.3 ease !important;
 	caret-color: transparent;
 	width: 250px;
-	&:hover,
-	&:focus,
-	&:focus-visible {
-		text-shadow: 0px 0px 4px rgba(184, 189, 206, 0.8);
-		color: #c3c8db;
-		outline: none;
-	}
-	&::placeholder {
-		transition: none !important;
-	}
-}
-
-#faviconInput {
-	background: transparent;
-	font-style: italic;
-	text-shadow: 0px 0px 4px rgba(166, 173, 200, 0.75);
-	transition: all 0.3 ease !important;
-	caret-color: transparent;
-	width: 220px;
-	&:hover,
-	&:focus,
-	&:focus-visible {
-		text-shadow: 0px 0px 4px rgba(184, 189, 206, 0.8);
-		color: #c3c8db;
-		outline: none;
-	}
-	&::placeholder {
-		transition: none !important;
-	}
-}
-
-#panicButtonInput {
-	background: transparent;
-	font-style: italic;
-	text-shadow: 0px 0px 4px rgba(166, 173, 200, 0.75);
-	transition: all 0.3 ease !important;
-	caret-color: transparent;
-	width: 175px;
 	&:hover,
 	&:focus,
 	&:focus-visible {

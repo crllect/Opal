@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const settingsComponents = document.querySelectorAll('.settingsComponent');
     const titleInput = document.getElementById('titleInput');
     const faviconInput = document.getElementById('faviconInput');
+    const clearCookiesInput = document.getElementById('clearCookiesInput');
+    const disableSplashInput = document.getElementById('disableSplashInput');
     if (settingsButton &&
         iframeWindow &&
         settingsWindow &&
@@ -29,6 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
             faviconInput.addEventListener('keypress', event => {
                 if (event.key === 'Enter') {
                     handleFaviconInput();
+                }
+            });
+        }
+        if (clearCookiesInput) {
+            clearCookiesInput.addEventListener('keypress', event => {
+                if (event.key === 'Enter') {
+                    handleClearCookiesInput();
                 }
             });
         }
@@ -59,6 +68,23 @@ function handleFaviconInput() {
         updateFavicon(value);
     }
 }
+function handleClearCookiesInput() {
+    const clearCookiesInput = document.getElementById('clearCookiesInput');
+    const value = sanitizeInput(clearCookiesInput.value);
+    if (value.toLowerCase() === 'y') {
+        clearCookiesAndLocalStorage();
+    }
+}
+function clearCookiesAndLocalStorage() {
+    const cookies = document.cookie.split(';');
+    for (const cookie of cookies) {
+        const eqPos = cookie.indexOf('=');
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    }
+    localStorage.clear();
+    location.reload();
+}
 function sanitizeInput(input) {
     const element = document.createElement('div');
     element.innerText = input;
@@ -76,6 +102,7 @@ function updateFavicon(url) {
 function loadInitialValues() {
     const savedTitle = localStorage.getItem('titleCloak');
     const savedFavicon = localStorage.getItem('faviconCloak');
+    const savedDisableSplash = localStorage.getItem('disableSplash');
     if (savedTitle) {
         document.title = savedTitle;
         const titleInput = document.getElementById('titleInput');
@@ -85,5 +112,9 @@ function loadInitialValues() {
         updateFavicon(savedFavicon);
         const faviconInput = document.getElementById('faviconInput');
         faviconInput.value = savedFavicon;
+    }
+    if (savedDisableSplash) {
+        const disableSplashInput = document.getElementById('disableSplashInput');
+        disableSplashInput.value = savedDisableSplash === 'true' ? 'y' : 'n';
     }
 }
