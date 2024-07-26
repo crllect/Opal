@@ -29,8 +29,10 @@
 	background-color: #1e1e2e;
 	z-index: 0;
 	transition: all 0.3s ease !important;
+	display: none;
 	&.settingsOpen {
 		width: calc(35vw - 5px * 2);
+		display: block;
 	}
 }
 
