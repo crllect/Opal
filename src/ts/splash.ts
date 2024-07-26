@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		splash.style.width = '100vw';
 		splash.style.height = '100vh';
 		splash.style.background =
-			'url("../assets/splash.png") no-repeat center center';
+			'url("../assets/splashsmall.png") no-repeat center center';
 		splash.style.backgroundSize = 'cover';
 		splash.style.transition =
 			'transform 0.3s ease-in, opacity 0.4s ease-in';
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					image.style.boxShadow =
 						'0px 2px 10px 0px rgba(0, 0, 0, 0.25)';
 					image.style.background =
-						'url("../assets/splash.png") no-repeat center center';
+						'url("../assets/splashpfp2.png") no-repeat center center';
 					image.style.backgroundSize = 'cover';
 					image.style.width = '128px';
 					image.style.height = '128px';

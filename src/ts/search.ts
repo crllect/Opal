@@ -145,8 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	};
 
-	switcherButton.textContent =
-		localStorage.getItem('switcher') || 'epoxyTransport';
+	switcherButton.textContent = localStorage.getItem('switcher') || 'epoxy';
 	switcherButton.addEventListener('click', toggleSwitcher);
 
 	const updateWebsiteTitle = () => {

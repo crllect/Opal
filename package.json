@@ -3,10 +3,8 @@
 	"version": "0.0.2",
 	"scripts": {
 		"start": "node index.js",
-		"css:build": "postcss src/css/tailwind.css -o public/css/tailwind.css",
-		"css:watch": "postcss src/css/tailwind.css -o public/css/tailwind.css --watch",
 		"format": "prettier --write .",
-		"compile": "tsc && prettier --write ."
+		"compile": "prettier --write . && sass --style=compressed src/css:public/css && tsc && rm public/js/bundle.js &&terser public/js/*.js --compress --mangle --output public/js/bundle.js"
 	},
 	"dependencies": {
 		"@mercuryworkshop/bare-as-module3": "^2.2.2",
@@ -22,7 +20,8 @@
 		"autoprefixer": "^10.4.19",
 		"postcss": "^8.4.39",
 		"postcss-cli": "^11.0.0",
-		"tailwindcss": "^3.4.6",
+		"sass": "^1.77.8",
+		"terser": "^5.31.3",
 		"typescript": "^5.5.4"
 	}
 }
