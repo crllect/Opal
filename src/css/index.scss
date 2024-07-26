@@ -200,3 +200,39 @@
 	text-align: right;
 	display: flex;
 }
+
+#termText {
+	min-width: 93px;
+}
+
+@media (max-width: 1050px) {
+	#websiteTitle {
+		display: none;
+	}
+	#middleButtons {
+		display: none;
+	}
+	.topBar {
+		flex-direction: row-reverse;
+	}
+	.search {
+		transform: translateX(0) !important;
+		flex-grow: 1;
+		display: flex !important;
+		flex-direction: row;
+		position: absolute;
+		top: 0;
+		left: 0;
+		text-overflow: clip;
+	}
+	#switcherButton {
+		height: auto;
+		transform: translateY(-10px);
+	}
+	#urlInput {
+		flex-grow: 1;
+		transform: translateY(-10px) !important;
+		margin-left: 5px;
+		width: calc(100vw - 377px) !important;
+	}
+}

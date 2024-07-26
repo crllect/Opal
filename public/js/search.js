@@ -125,7 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
         }
     };
-    switcherButton.textContent = localStorage.getItem('switcher') || 'epoxy';
+    switcherButton.textContent =
+        localStorage.getItem('switcher') || 'epoxyTransport';
     switcherButton.addEventListener('click', toggleSwitcher);
     const updateWebsiteTitle = () => {
         const websiteTitle = document.getElementById('websiteTitle');
