@@ -125,13 +125,23 @@ document.addEventListener('DOMContentLoaded', () => {
 	const switcherButton = document.getElementById(
 		'switcherButton'
 	) as HTMLButtonElement;
+	const switcherButton2 = document.getElementById(
+		'switcherButton2'
+	) as HTMLButtonElement;
+
+	const updateButtons = () => {
+		const currentValue =
+			localStorage.getItem('switcher') || 'epoxyTransport';
+		switcherButton.textContent = currentValue;
+		switcherButton2.textContent = currentValue;
+	};
 
 	const toggleSwitcher = () => {
 		const currentValue = localStorage.getItem('switcher');
 		const newValue =
 			currentValue === 'epoxyTransport' ? 'bareMux' : 'epoxyTransport';
 		localStorage.setItem('switcher', newValue);
-		switcherButton.textContent = newValue;
+		updateButtons();
 
 		switch (newValue) {
 			case 'epoxyTransport':
@@ -145,9 +155,23 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	};
 
-	switcherButton.textContent =
-		localStorage.getItem('switcher') || 'epoxyTransport';
+	updateButtons();
+
 	switcherButton.addEventListener('click', toggleSwitcher);
+	switcherButton2.addEventListener('click', toggleSwitcher);
+
+	const observeLocalStorage = () => {
+		const storageObserver = new MutationObserver(updateButtons);
+		storageObserver.observe(document, {
+			subtree: true,
+			childList: true,
+			attributes: true
+		});
+
+		window.addEventListener('storage', updateButtons);
+	};
+
+	observeLocalStorage();
 
 	const updateWebsiteTitle = () => {
 		const websiteTitle = document.getElementById('websiteTitle');
@@ -157,8 +181,11 @@ document.addEventListener('DOMContentLoaded', () => {
 					iframeWindow.contentDocument ||
 					iframeWindow.contentWindow.document;
 				websiteTitle.textContent = iframeDoc.title;
+				if (!iframeDoc.title) {
+					websiteTitle.textContent = 'Opal';
+				}
 			} catch (error) {
-				websiteTitle.textContent = window.location.hostname;
+				websiteTitle.textContent = 'Opal';
 			}
 		}
 	};
@@ -181,9 +208,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const urlInput = document.getElementById('urlInput') as HTMLInputElement;
 
-	setInterval(() => {
-		urlInput.placeholder = urlInput.placeholder === '_' ? '' : '_';
-	}, 250);
+	const inputs = document.querySelectorAll('input');
+
+	inputs.forEach(input => {
+		setInterval(() => {
+			input.placeholder = input.placeholder === '_' ? '' : '_';
+		}, 250);
+	});
 
 	if (urlInput) {
 		urlInput.style.width = '100px';

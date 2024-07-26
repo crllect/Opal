@@ -109,11 +109,17 @@ document.addEventListener('DOMContentLoaded', () => {
         currentHistoryIndex = searchHistory.length - 1;
     }
     const switcherButton = document.getElementById('switcherButton');
+    const switcherButton2 = document.getElementById('switcherButton2');
+    const updateButtons = () => {
+        const currentValue = localStorage.getItem('switcher') || 'epoxyTransport';
+        switcherButton.textContent = currentValue;
+        switcherButton2.textContent = currentValue;
+    };
     const toggleSwitcher = () => {
         const currentValue = localStorage.getItem('switcher');
         const newValue = currentValue === 'epoxyTransport' ? 'bareMux' : 'epoxyTransport';
         localStorage.setItem('switcher', newValue);
-        switcherButton.textContent = newValue;
+        updateButtons();
         switch (newValue) {
             case 'epoxyTransport':
                 connection.setTransport('/epoxy/index.mjs', [
@@ -125,9 +131,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
         }
     };
-    switcherButton.textContent =
-        localStorage.getItem('switcher') || 'epoxyTransport';
+    updateButtons();
     switcherButton.addEventListener('click', toggleSwitcher);
+    switcherButton2.addEventListener('click', toggleSwitcher);
+    const observeLocalStorage = () => {
+        const storageObserver = new MutationObserver(updateButtons);
+        storageObserver.observe(document, {
+            subtree: true,
+            childList: true,
+            attributes: true
+        });
+        window.addEventListener('storage', updateButtons);
+    };
+    observeLocalStorage();
     const updateWebsiteTitle = () => {
         const websiteTitle = document.getElementById('websiteTitle');
         if (websiteTitle) {
@@ -135,9 +151,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const iframeDoc = iframeWindow.contentDocument ||
                     iframeWindow.contentWindow.document;
                 websiteTitle.textContent = iframeDoc.title;
+                if (!iframeDoc.title) {
+                    websiteTitle.textContent = 'Opal';
+                }
             }
             catch (error) {
-                websiteTitle.textContent = window.location.hostname;
+                websiteTitle.textContent = 'Opal';
             }
         }
     };
@@ -154,9 +173,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     updateArrows();
     const urlInput = document.getElementById('urlInput');
-    setInterval(() => {
-        urlInput.placeholder = urlInput.placeholder === '_' ? '' : '_';
-    }, 250);
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        setInterval(() => {
+            input.placeholder = input.placeholder === '_' ? '' : '_';
+        }, 250);
+    });
     if (urlInput) {
         urlInput.style.width = '100px';
         const updateWidth = () => {

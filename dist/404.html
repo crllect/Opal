@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="description" content="404, page not found"><title>404, Page Not Found</title><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=6,user-scalable=yes"><link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"></noscript><link rel="stylesheet" href="css/404.css"></head><body><div class="backdrop"></div><div class="pageNotFound">404</div><span class="pageNotFoundText">Entered page not found</span><div class="kaomoji"></div><script>async function fetchKaomojiLine() {
 				try {
-					const response = await fetch('./assets/kaomojis.txt');
+					const response = await fetch('assets/kaomojis.txt');
 					const text = await response.text();
 					const lines = text
 						.split('\n')

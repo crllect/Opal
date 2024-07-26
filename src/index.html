@@ -17,7 +17,7 @@
 			content="proxy server solutions, anonymous web browsing, high-speed proxies, secure proxy networks, private internet access, unblocked online games, access school games, bypass game restrictions, free web-based games, unblocked game sites, HTML5 game development, responsive web design, frontend frameworks, JavaScript UI development, CSS3 animations, SCSS best practices, SASS styling tips, SCSS vs SASS, advanced SCSS techniques, mixin libraries for SASS, clean UI design principles, minimalist website interfaces, user-friendly web design, intuitive navigation UI, aesthetic UI elements, interactive web games, HTML game programming, cross-platform game development, browser game optimization, game design for web, CSS animations for games, JavaScript game scripts, easy-to-learn web games, educational online games, casual browser games, competitive online gaming, web game design inspiration, mobile-responsive games, web gaming communities, HTML5 gaming libraries, CSS layout techniques, SASS variables and functions, SCSS nesting and partials, modular front-end coding, UI color schemes, typography in web design, front-end development tools, user experience enhancements, web design trends, innovative online games"
 		/>
 		<title>Opal</title>
-		link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
 		<link
 			rel="preload"
 			href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
@@ -98,6 +98,10 @@
 				<button class="splashButton middleButton" id="splashButton">
 					Splash
 				</button>
+				<span>&nbsp;/&nbsp;</span>
+				<button class="settingsButton middleButton" id="settingsButton">
+					Settings
+				</button>
 			</div>
 			<div id="botClock"></div>
 		</div>
@@ -107,6 +111,20 @@
 			class="iframeWindow"
 			title="main window"
 		></iframe>
+
+		<div class="settingsWindow">
+			<div class="settingsTitle settingsComponent" id="settingsButton">
+				Settings
+			</div>
+			<div class="cloaks">
+				<span class="settingsComponent titleCloak"></span>
+				<span class="settingsComponent faviconCloak"></span>
+			</div>
+
+			<span class="settingsComponent panicButton"></span>
+
+			<button id="switcherButton2">epoxyTransport</button>
+		</div>
 	</body>
 	<script src="/uv/uv.bundle.js"></script>
 	<script src="/uv/uv.config.js"></script>
