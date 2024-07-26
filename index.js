@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 const bare = createBareServer('/bare/');
 const __dirname = join(fileURLToPath(import.meta.url), '..');
 const app = express();
-const publicPath = 'public'; // if you renamed your directory to something else other than public
+const publicPath = 'dist';
 
 app.use(express.static(publicPath));
 app.use('/uv/', express.static(uvPath));
@@ -22,7 +22,7 @@ app.use('/baremod/', express.static(bareModulePath));
 
 app.use((req, res) => {
 	res.status(404);
-	res.sendFile(join(__dirname, publicPath, '404.html')); // change to your 404 page
+	res.sendFile(join(__dirname, publicPath, '404.html'));
 });
 
 const server = createServer();
@@ -47,7 +47,7 @@ server.on('upgrade', (req, socket, head) => {
 
 let port = parseInt(process.env.PORT || '');
 
-if (isNaN(port)) port = 8080; // set your port
+if (isNaN(port)) port = 8080;
 
 server.on('listening', () => {
 	const address = server.address();

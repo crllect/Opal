@@ -228,8 +228,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	const splashButton = document.getElementById('splashButton');
+
 	if (splashButton) {
 		splashButton.addEventListener('click', splashScreen);
 	}
+
 	splashScreen();
 });
