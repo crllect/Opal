@@ -117,13 +117,93 @@
 				Settings
 			</div>
 			<div class="cloaks">
-				<span class="settingsComponent titleCloak"></span>
-				<span class="settingsComponent faviconCloak"></span>
+				<div class="settingsComponent titleCloak">
+					<span id="termText" class="settingsComponent">
+						Opal ~/title $
+					</span>
+					<input
+						type="text"
+						class="settingsComponent"
+						id="titleInput"
+						placeholder="_"
+					/>
+				</div>
+				<div class="settingsComponent faviconCloak">
+					<span id="termText" class="settingsComponent">
+						Opal ~/favicon $
+					</span>
+					<input
+						type="text"
+						class="settingsComponent"
+						id="faviconInput"
+						placeholder="_"
+					/>
+				</div>
+			</div>
+			<span class="settingsComponent defaultInputWarning"
+				>(input "default" to reset it)</span
+			>
+			<!--
+			<div class="settingsComponent panicButton">
+				<span id="termText" class="settingsComponent">
+					Opal ~/panicButton $
+				</span>
+				<input
+					type="text"
+					class="settingsComponent"
+					id="panicButtonInput"
+					placeholder="_"
+				/>
+			</div>
+		-->
+			<div class="settingsComponent infoContainer">
+				<span id="termText" class="settingsComponent">
+					Opal ~/info $ cat info.txt
+				</span>
+				<p>
+					>>
+					<br />
+					To switch bare clients, press
+					<button id="switcherButton2">epoxyTransport</button> at the
+					top of the screen
+					<br />
+					<br />
+					To search with inside of a url, add your query as a
+					parameter, for example
+					<a href="https://opal.crllect.dev/q=test" class="qExample"
+						>opal.crllect.dev/q=test</a
+					>
+					will open a new page with that already searched "test". This
+					is useful for sending links to games
+					<br />
+					<span class="msgEnd">(END)</span>
+				</p>
 			</div>
 
-			<span class="settingsComponent panicButton"></span>
-
-			<button id="switcherButton2">epoxyTransport</button>
+			<div class="rootPrompts">
+				<div class="settingsComponent clearCookies">
+					<span id="termText" class="settingsComponent">
+						root@Opal / # Clear Cookies?<br />(Y/N)
+					</span>
+					<input
+						type="text"
+						class="settingsComponent"
+						id="titleInput"
+						placeholder="_"
+					/>
+				</div>
+				<div class="settingsComponent disableSplash">
+					<span id="termText" class="settingsComponent">
+						root@Opal / # Disable Splash?<br />(Y/N)
+					</span>
+					<input
+						type="text"
+						class="settingsComponent"
+						id="faviconInput"
+						placeholder="_"
+					/>
+				</div>
+			</div>
 		</div>
 	</body>
 	<script src="/uv/uv.bundle.js"></script>

@@ -51,7 +51,8 @@
 	width: calc(35vw - 5px * 2);
 	text-align: center;
 	font-size: 20px;
-	margin-top: 3.5rem;
+	margin-top: 2rem;
+	margin-bottom: 1.2rem;
 }
 
 .settingsComponent {
@@ -67,6 +68,85 @@
 		color: #a6adc8;
 		user-select: auto;
 	}
+}
+
+#titleInput {
+	background: transparent;
+	font-style: italic;
+	text-shadow: 0px 0px 4px rgba(166, 173, 200, 0.75);
+	transition: all 0.3 ease !important;
+	caret-color: transparent;
+	width: 250px;
+	&:hover,
+	&:focus,
+	&:focus-visible {
+		text-shadow: 0px 0px 4px rgba(184, 189, 206, 0.8);
+		color: #c3c8db;
+		outline: none;
+	}
+	&::placeholder {
+		transition: none !important;
+	}
+}
+
+#faviconInput {
+	background: transparent;
+	font-style: italic;
+	text-shadow: 0px 0px 4px rgba(166, 173, 200, 0.75);
+	transition: all 0.3 ease !important;
+	caret-color: transparent;
+	width: 220px;
+	&:hover,
+	&:focus,
+	&:focus-visible {
+		text-shadow: 0px 0px 4px rgba(184, 189, 206, 0.8);
+		color: #c3c8db;
+		outline: none;
+	}
+	&::placeholder {
+		transition: none !important;
+	}
+}
+
+#panicButtonInput {
+	background: transparent;
+	font-style: italic;
+	text-shadow: 0px 0px 4px rgba(166, 173, 200, 0.75);
+	transition: all 0.3 ease !important;
+	caret-color: transparent;
+	width: 175px;
+	&:hover,
+	&:focus,
+	&:focus-visible {
+		text-shadow: 0px 0px 4px rgba(184, 189, 206, 0.8);
+		color: #c3c8db;
+		outline: none;
+	}
+	&::placeholder {
+		transition: none !important;
+	}
+}
+
+.titleCloak,
+.faviconCloak,
+.panicButton,
+.clearCookies,
+.disableSplash,
+.infoContainer,
+.defaultInputWarning {
+	margin: 1.2rem;
+}
+
+.defaultInputWarning {
+	color: #a6adc8;
+	opacity: 0.5;
+}
+
+.msgEnd {
+	background-color: #a6adc8;
+	color: #1e1e2e;
+	box-shadow: 0px 0px 4px rgba(166, 173, 200, 0.65);
+	text-shadow: 0 0 0 transparent;
 }
 
 .topBar {
@@ -144,7 +224,6 @@
 	}
 	&::placeholder {
 		transition: none !important;
-		animation: blink 1s infinite !important;
 	}
 }
 
@@ -166,6 +245,13 @@
 		text-shadow: 0px 0px 4px rgba(184, 189, 206, 0.8);
 		color: #c3c8db;
 	}
+}
+
+#switcherButton2,
+.qExample {
+	text-shadow: 0px 0px 4px rgba(184, 189, 206, 0.8);
+	color: #c3c8db;
+	font-style: italic;
 }
 
 .middleButton {
