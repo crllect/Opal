@@ -56,6 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		}
 
+		if (disableSplashInput) {
+			disableSplashInput.addEventListener('keypress', event => {
+				if (event.key === 'Enter') {
+					handleDisableSplashInput();
+				}
+			});
+		}
+
 		loadInitialValues();
 	}
 });
@@ -95,6 +103,18 @@ function handleClearCookiesInput() {
 	const value = sanitizeInput(clearCookiesInput.value);
 	if (value.toLowerCase() === 'y') {
 		clearCookiesAndLocalStorage();
+	}
+}
+
+function handleDisableSplashInput() {
+	const disableSplashInput = document.getElementById(
+		'disableSplashInput'
+	) as HTMLInputElement;
+	const value = sanitizeInput(disableSplashInput.value);
+	if (value.toLowerCase() === 'y') {
+		localStorage.setItem('disableSplash', 'true');
+	} else if (value.toLowerCase() === 'n') {
+		localStorage.removeItem('disableSplash');
 	}
 }
 
