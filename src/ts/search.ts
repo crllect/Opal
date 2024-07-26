@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		urlInput.style.width = '100px';
 
 		const updateWidth = () => {
-			const maxChars = 75;
+			const maxChars = 35;
 			const initialWidth = 250;
 			const tempSpan = document.createElement('span');
 			tempSpan.style.visibility = 'hidden';
@@ -275,11 +275,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	if (urlInput && search) {
 		urlInput.addEventListener('focus', () => {
-			search.style.transform = 'translateX(11vw)';
+			search.style.transform = 'translateX(-75%)';
 		});
 
 		urlInput.addEventListener('blur', () => {
-			search.style.transform = 'translateX(17.5vw)';
+			search.style.transform = 'translateX(-25%)';
 		});
 	}
 	if (!localStorage.getItem('hasVisited')) {

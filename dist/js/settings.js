@@ -1,6 +1,7 @@
 "use strict";
 document.addEventListener('DOMContentLoaded', () => {
     const settingsButton = document.getElementById('settingsButton');
+    const settingsButton2 = document.getElementById('settingsButton2');
     const iframeWindow = document.querySelector('.iframeWindow');
     const settingsWindow = document.querySelector('.settingsWindow');
     const settingsComponents = document.querySelectorAll('.settingsComponent');
@@ -9,10 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearCookiesInput = document.getElementById('clearCookiesInput');
     const disableSplashInput = document.getElementById('disableSplashInput');
     if (settingsButton &&
+        settingsButton2 &&
         iframeWindow &&
         settingsWindow &&
         settingsComponents.length > 0) {
         settingsButton.addEventListener('click', () => {
+            iframeWindow.classList.toggle('settingsOpen');
+            settingsWindow.classList.toggle('settingsOpen');
+            settingsButton.classList.toggle('settingsOpen');
+            settingsComponents.forEach(settingsComponent => {
+                settingsComponent.classList.toggle('settingsOpen');
+            });
+        });
+        settingsButton2.addEventListener('click', () => {
             iframeWindow.classList.toggle('settingsOpen');
             settingsWindow.classList.toggle('settingsOpen');
             settingsButton.classList.toggle('settingsOpen');

@@ -52,6 +52,14 @@
 					reload
 				</button>
 				<button
+					id="reloadButton2"
+					class="controlsButton"
+					onclick="reloadPage()"
+					tabindex="0"
+				>
+					r
+				</button>
+				<button
 					id="forwardButton"
 					class="controlsButton"
 					onclick="goForward()"
@@ -62,7 +70,7 @@
 			</div>
 			<div class="search">
 				<button id="switcherButton" tabindex="0">epoxyTransport</button
-				><span id="termText">@Opal ~ $</span>
+				><span id="termText"><span id="searchAt">@</span>Opal ~ $</span>
 				<input type="text" id="urlInput" placeholder="_" tabindex="0" />
 			</div>
 			<span id="websiteTitle">Opal</span>
@@ -113,14 +121,17 @@
 		></iframe>
 
 		<div class="settingsWindow">
-			<div class="settingsTitle settingsComponent" id="settingsButton">
+			<div
+				class="settingsTitle settingsButton2 settingsComponent"
+				id="settingsButton2"
+			>
 				Settings
 			</div>
 			<div class="cloaks">
 				<div class="settingsComponent titleCloak">
-					<span id="termText" class="settingsComponent">
+					<div id="termText termTextTitle" class="settingsComponent">
 						Opal ~/title $
-					</span>
+					</div>
 					<input
 						type="text"
 						class="settingsComponent"
@@ -129,9 +140,12 @@
 					/>
 				</div>
 				<div class="settingsComponent faviconCloak">
-					<span id="termText" class="settingsComponent">
+					<div
+						id="termText termTextFavicon"
+						class="settingsComponent"
+					>
 						Opal ~/favicon $
-					</span>
+					</div>
 					<input
 						type="text"
 						class="settingsComponent"
@@ -183,25 +197,31 @@
 			<div class="rootPrompts">
 				<div class="settingsComponent clearCookies">
 					<span id="termText" class="settingsComponent">
-						root@Opal / # Clear Cookies?<br />(Y/N)
+						root@Opal / # Clear Cookies?<br />
+						<div id="termTextYNContainer">
+							<div id="termTextYN">(Y/N)</div>
+							<input
+								type="text"
+								class="settingsComponent"
+								id="clearCookiesInput"
+								placeholder="_"
+							/>
+						</div>
 					</span>
-					<input
-						type="text"
-						class="settingsComponent"
-						id="clearCookiesInput"
-						placeholder="_"
-					/>
 				</div>
 				<div class="settingsComponent disableSplash">
 					<span id="termText" class="settingsComponent">
-						root@Opal / # Disable Splash?<br />(Y/N)
+						root@Opal / # Disable Splash?<br />
+						<div id="termTextYNContainer">
+							<div id="termTextYN">(Y/N)</div>
+							<input
+								type="text"
+								class="settingsComponent"
+								id="disableSplashInput"
+								placeholder="_"
+							/>
+						</div>
 					</span>
-					<input
-						type="text"
-						class="settingsComponent"
-						id="disableSplashInput"
-						placeholder="_"
-					/>
 				</div>
 			</div>
 		</div>
