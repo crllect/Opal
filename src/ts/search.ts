@@ -161,9 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
 				websiteTitle.textContent = window.location.hostname;
 			}
 		}
-
-		setInterval(updateWebsiteTitle, 1000);
 	};
+
+	setInterval(updateWebsiteTitle, 1000);
 
 	const iframe = document.querySelector('iframe');
 	if (iframe) {
@@ -260,5 +260,15 @@ document.addEventListener('DOMContentLoaded', () => {
 				urlInput.focus();
 			}
 		}, 250);
+	}
+
+	const params = new URLSearchParams(window.location.search);
+	if (params.has('q')) {
+		const query = params.get('q');
+		if (query && urlInput) {
+			urlInput.value = query;
+			const event = new KeyboardEvent('keydown', { key: 'Enter' });
+			urlInput.dispatchEvent(event);
+		}
 	}
 });

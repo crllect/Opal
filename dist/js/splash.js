@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         '0px 2px 10px 0px rgba(0, 0, 0, 0.25)';
                     firstVisitPopup.style.borderRadius = '9px';
                     firstVisitPopup.style.width = '475px';
-                    firstVisitPopup.style.height = '350px';
+                    firstVisitPopup.style.height = '300px';
                     firstVisitPopup.style.zIndex = '1000';
                     firstVisitPopup.style.display = 'flex';
                     firstVisitPopup.style.flexDirection = 'column';
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     textBox.style.color = '#A6ADC8';
                     textBox.style.textAlign = 'center';
                     textBox.style.fontFamily = 'Open Sans';
-                    textBox.style.fontSize = '22px';
+                    textBox.style.fontSize = '26px';
                     textBox.style.fontStyle = 'normal';
                     textBox.style.fontWeight = '400';
                     textBox.style.lineHeight = 'normal';
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     shamelessPlug.style.color = '#CBA6F7';
                     shamelessPlug.style.textAlign = 'center';
                     shamelessPlug.style.fontFamily = 'Open Sans';
-                    shamelessPlug.style.fontSize = '20px';
+                    shamelessPlug.style.fontSize = '22px';
                     shamelessPlug.style.fontStyle = 'normal';
                     shamelessPlug.style.fontWeight = '400';
                     shamelessPlug.style.lineHeight = 'normal';
@@ -197,5 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (splashButton) {
         splashButton.addEventListener('click', splashScreen);
     }
-    splashScreen();
+    const urlParams = new URLSearchParams(window.location.search);
+    const disableSplash = localStorage.getItem('disableSplash');
+    if (!disableSplash && !urlParams.has('q')) {
+        splashScreen();
+    }
 });
