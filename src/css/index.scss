@@ -13,7 +13,7 @@
 	z-index: 0;
 	transition: all 0.3s ease !important;
 	&.settingsOpen {
-		width: calc((100vw - 5px * 2) - (40vw - 5px * 2) - 5px);
+		width: calc((100vw - 5px * 2) - (45vw - 5px * 2) - 5px);
 	}
 }
 
@@ -33,7 +33,7 @@
 	&.settingsOpen {
 		font-size: 2vh !important;
 		transform: translateX(0);
-		width: calc(40vw - 5px * 2);
+		width: calc(45vw - 5px * 2);
 	}
 }
 
@@ -62,7 +62,7 @@
 	display: none;
 	color: transparent;
 	background-color: transparent;
-	font-size: calc(0.5vw + (3.5vh + 20px) / 5);
+	font-size: calc(0.5vw + (3.5vh + 20px) / 6);
 	transition: all 0.3s ease !important;
 	transition-delay: 300;
 	transition-property: display;
