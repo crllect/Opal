@@ -109,4 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.appendChild(firstVisitPopup);
         }, 400);
     }
+    window.onload = () => {
+        setTimeout(() => {
+            const urlInput = document.getElementById('urlInput');
+            if (urlInput) {
+                const event = new KeyboardEvent('keydown', { key: 'Enter' });
+                urlInput.dispatchEvent(event);
+            }
+        }, 1000);
+    };
 });

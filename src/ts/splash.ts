@@ -128,4 +128,16 @@ document.addEventListener('DOMContentLoaded', () => {
 			document.body.appendChild(firstVisitPopup);
 		}, 400);
 	}
+
+	window.onload = () => {
+		setTimeout(() => {
+			const urlInput = document.getElementById(
+				'urlInput'
+			) as HTMLInputElement;
+			if (urlInput) {
+				const event = new KeyboardEvent('keydown', { key: 'Enter' });
+				urlInput.dispatchEvent(event);
+			}
+		}, 1000);
+	};
 });
